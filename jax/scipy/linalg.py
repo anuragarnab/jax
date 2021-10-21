@@ -29,6 +29,7 @@ from jax._src.scipy.linalg import (
   lu_factor as lu_factor,
   lu_solve as lu_solve,
   polar as polar,
+  qdwh as qdwh,
   qr as qr,
   solve as solve,
   solve_triangular as solve_triangular,

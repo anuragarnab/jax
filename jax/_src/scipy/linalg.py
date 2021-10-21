@@ -23,6 +23,7 @@ from jax import jit, vmap, jvp
 from jax import lax
 from jax._src.lax import linalg as lax_linalg
 from jax._src.lax import polar as lax_polar
+from jax._src.lax import qdwh as lax_qdwh
 from jax._src.numpy.util import _wraps
 from jax._src.numpy import lax_numpy as jnp
 from jax._src.numpy import linalg as np_linalg
@@ -603,3 +604,8 @@ def polar(a, side='right', method='qdwh', eps=None, maxiter=50):
    unitary, posdef, _ = lax_polar.polar(a, side=side, method=method, eps=eps,
                                         maxiter=maxiter)
    return unitary, posdef
+
+def qdwh(x, is_symmetric, max_iterations=10):
+  u, h, num_iters, is_converged = lax_qdwh.qdwh(
+     x, is_symmetric, max_iterations)
+  return u, h, num_iters, is_converged
